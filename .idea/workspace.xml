@@ -7,9 +7,6 @@
     <list default="true" id="f2f56410-62b9-4036-816f-41e22524a913" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Minesweeper/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Minesweeper/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Minesweeper/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Minesweeper/Cell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Minesweeper/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Minesweeper/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Minesweeper/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Minesweeper/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -4,25 +4,22 @@ import java.util.*;
 public class Board {
 
     /////////////////////////////// Attributes ///////////////////////////////
-    private final Cell[][] cells;             // 2d grid of cells
 
+    private final Cell[][] cells;             // 2d grid of cells
 
     private final int width;                  // Number of cells on horizontal axis
 
-
     private final int height;                 // Number of cells on vertical axis
-
 
     private int bombCount;             // Number of bombs on the board.
 
-
     private int revealedTotal;          // Number of cells been revealed.
 
-    
     private int flagCount;           //Number of cells marked with a flag to block revealing as they are suspected to be bombs
 
 
     /////////////////////////////// Constructor ///////////////////////////////
+
     public Board(int width, int height) {               // Creates board with defined width and height
         this.width = width;
         this.height = height;
@@ -37,7 +34,9 @@ public class Board {
         flagCount = 0;
     }
 
+
     /////////////////////////////// Methods ///////////////////////////////
+
     public void printBoard() {                          // Prints board to user in terminal
 
         for(int y = 0; y < height; y++) {               // Print the cells
@@ -71,7 +70,6 @@ public class Board {
         System.out.println(revealedTotal + " revealed of " + (height*width)
                 + " with " + bombCount + " bombs! Flagged: " + flagCount);
     }
-
 
 
     public boolean isCellBomb(Position position) {                              // Gets if cell at chosen position is a bomb, returns true if so
@@ -117,10 +115,9 @@ public class Board {
         }
     }
 
-
-
     public void spawnBombs(int maxBombs) {                      // Spawns bombs up to maximum value of maxBomb
-        Random rand = new Random();
+        //int integer = new int()
+         Random rand = new Random();
         for(int i = 0; i < maxBombs; i++) {
             addBomb(new Position(rand.nextInt(width), rand.nextInt(height)));
         }
@@ -128,6 +125,7 @@ public class Board {
 
 
     public boolean isWon() {                                    //Checks if all cells have been revealed except for bomb locations, returns true if won
+
         return revealedTotal + bombCount == width*height;
     }
 
@@ -199,8 +197,8 @@ public class Board {
     }
 
 
-
-    private void checkFloodFillToCell(Position position, int[][] vis, Queue<Position> positionQueue) {       // Method to help floodFillReveal. Tests cell at p. If cell is valid coordinate, it has not been visited yet and is a valid element for floodfill to reveal all neighbors with 0 mine proximity
+    private void checkFloodFillToCell(Position position, int[][] vis, Queue<Position> positionQueue) {       // Method to help floodFillReveal. Tests cell at p. If cell is valid coordinate, it has not been visited yet
+                                                                                                             // and is a valid element for floodfill to reveal all neighbors with 0 mine proximity
         if (validPosition(position)) {                                                                       // It will add the cell as a new Cell to check its neighbours and mark it as visited.
             if (vis[position.x][position.y] == 0                                                             // vis is the visited matrix indicating the cells that have been checked
                     && !getCellAt(position).getIsRevealed()
