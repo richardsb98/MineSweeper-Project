@@ -26,7 +26,7 @@ public class Board {
     public Board(int width, int height) {               // Creates board with defined width and height
         this.width = width;
         this.height = height;
-        bombCount = 20;
+        bombCount = 0;
         cells = new Cell[width][height];                // All cells set to default initially after creation
         for(int y = 0; y < height; y++) {
             for(int x = 0; x < width; x++) {
@@ -42,7 +42,7 @@ public class Board {
 
         for(int y = 0; y < height; y++) {               // Print the cells
             for(int x = 0; x < width; x++) {
-                System.out.print(cells[x][y].getColouredString() + "  ");
+                System.out.print(cells[x][y] + "  ");
             }
 
 

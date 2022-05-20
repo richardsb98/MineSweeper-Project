@@ -11,13 +11,6 @@ public class Cell {                     // Cell class defines if the cell is a b
 
     private boolean isFlagged;          //Indicates if the cell is flagged by the player.
 
-    private static final String White = "\u001B[0m";            //Defines colours for cells
-    private static final String Red = "\u001B[31m";
-    private static final String Green = "\u001B[32m";
-
-    // private static final String Yellow = "\u001B[33m";
-    private static final String Cyan = "\u001B[36m";
-    private static final String Purple = "\u001B[35m";
 
     /////////////////////////////// Constructor ///////////////////////////////
     public Cell() {                              // Resets cell back to default with all variables set to 0 or false.
@@ -73,33 +66,17 @@ public class Cell {                     // Cell class defines if the cell is a b
     }
 
     public String toString() {                      // defines cells by letters. If cell contains bomb: B. If cell contains flag: F, if unrevealed: *
-        if(getIsRevealed()) {
-            if(getIsBomb()) {
+        if (getIsRevealed()) {
+            if (getIsBomb()) {
                 return "B";
             } else {
-                return ""+neighbours;
+                return "" + neighbours;
             }
-        } else if(isFlagged) {
+        } else if (isFlagged) {
             return "F";
         } else {
-            return "?";
+            return "*";
         }
     }
 
-    public String getColouredString() {                             // Adds colours to strings within toString method
-        String str = toString();
-        if(isFlagged) str = colourString(str, Red);
-        else if(isRevealed) {
-            if(isBomb) str = colourString(str, Red);
-            else if(neighbours == 0) str = colourString(str, Cyan);
-            else str = colourString(str, Green);
-        } else {
-            str = colourString(str, Purple);
-        }
-        return str;
-    }
-
-    private String colourString(String str, String colourFlag) {                // Method to define colours for getColouredString method
-        return colourFlag + str + White;
-    }
 }

@@ -18,38 +18,37 @@ public class Game {
         board.spawnBombs(10);
     }
 
-
     /////////////////////////////// Methods ///////////////////////////////
     /*
-      Handles the game loop swapping between printing the board and handling input to reach the next state.
+      Handles the game loop, swapping between printing the board and handling input to reach the next state.
       If a position is typed in followed by "flag" the target cell will be flagged.
       Otherwise the position will be used to reveal that target cell.
-      Once the game reaches either a won state where all non-bombs have been revealed or a bomb has been revealed, the game ends.
-      When the game ends the full board is revealed and a victory/defeat message is shown.
+      Once the game reaches either a win state where all non-bombs have been revealed or a bomb has been revealed, the game ends.
+      When the game ends, the full board is revealed and a victory/defeat message is shown.
      */
     public void startGame() {                                               // Initiates start game from main class
-        String extraCommand;                                                // Used to allow flag command following coordinates input.
+        String extraInput;                                                // Used to allow flag input following coordinates input.
         Position inputPosition;
 
         do {
-            board.printBoard();
+            board.printBoard();                                             // This function will print the board and allow user to play while the below conditions are met.
             board.printStatus();
             inputPosition = getPositionInput();
-            extraCommand = getStringOrQuit(scan).trim();
-            if(extraCommand.equalsIgnoreCase("flag")) {                     // if input followed by 'flag' places F in chosen cell
+            extraInput = getStringOrQuit(scan).trim();
+            if(extraInput.equalsIgnoreCase("flag")) {                     // if input followed by 'flag' places F in chosen cell
                 board.flagCell(inputPosition);
             } else if(board.isCellFlagged(inputPosition)) {                             // if flagged cell chosen, prints out line
                 System.out.println("You need to un-flag that cell first.");
             } else {                                                                    // reveals chosen cell
                 board.revealCell(inputPosition);
             }
-        } while(!board.isWon() && (extraCommand.equalsIgnoreCase("flag") || !board.isCellBomb(inputPosition)));
+        } while(!board.isWon() && (extraInput.equalsIgnoreCase("flag") || !board.isCellBomb(inputPosition)));                     //Above function runs as long as: game is not in a win state or, user wants to place a flag or, cell chosen is a bomb
         board.revealAll();
         board.printBoard();
         if(board.isWon()) {
             System.out.println("WINNER!, you found all the bombs!");                 // Once revealedTotal + bombCount == width*height, game is over and user has won
         } else {
-            System.out.println("YOU HIT A MINE! \n--------GAME OVER---------");      // choosing mine will display game over line
+            System.out.println("       YOU HIT A MINE! \n--------- GAME OVER ---------");      // choosing mine will display game over line
         }
     }
 
